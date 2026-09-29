@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --color-marveta-bg: #080910;
+  --color-marveta-surface: #1B1B1B;
+  --color-marveta-surface-2: #343434;
+  --color-marveta-purple: #1C1C2B;
+  --color-marveta-accent: #C0B4FE;
+
+  --font-heading: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #080910;
+  color: #FFFFFF;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Watermark Text Shimmer & Glow Animations */
+@keyframes watermark-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes watermark-pulse {
+  0% {
+    opacity: 0.08;
+    transform: scale(0.96) translateY(0);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.04) translateY(-4px);
+  }
+  100% {
+    opacity: 0.08;
+    transform: scale(0.96) translateY(0);
+  }
+}
+
+.animate-watermark-shimmer {
+  background-size: 250% auto;
+  animation: watermark-shimmer 9s ease-in-out infinite;
+}
+
+.animate-watermark-glow {
+  animation: watermark-pulse 6s ease-in-out infinite;
+}
+
+/* Responsive custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080910;
+}
+::-webkit-scrollbar-thumb {
+  background: #343434;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555555;
+}
+
+/* Hero section vertical outline typography */
+.hero-outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Header CTA Button - Signature Marveta Lilac with Continuous Loop Shimmer (No Scaleup) */
+@keyframes header-cta-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header-cta-btn {
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  padding-left: 24px;
+  padding-right: 24px;
+  color: #080910;
+  -webkit-clip-path: polygon(0 0, 0 0, 100% 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 100%);
+  clip-path: polygon(0 0, 0 0, 100% 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 100%);
+  height: 40px;
+  font-size: 0.72rem;
+  line-height: 14px;
+  letter-spacing: 1.2px;
+  transition: box-shadow 0.25s ease, filter 0.25s ease;
+  background-image: linear-gradient(115deg, #C0B4FE 0%, #DDD5FE 25%, #EDE9FE 50%, #C4B5FD 75%, #C0B4FE 100%);
+  background-size: 220% 100%;
+  animation: header-cta-shimmer 4s ease-in-out infinite;
+  border: 0;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(192, 180, 254, 0.25), 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.header-cta-btn:hover {
+  cursor: pointer;
+  /* Retain exact padding - no scaleup or width jumping */
+  padding-left: 24px;
+  padding-right: 24px;
+  filter: brightness(1.05);
+  box-shadow: 0 0 24px rgba(192, 180, 254, 0.45), 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.header-cta-btn:active {
+  filter: brightness(0.95);
+  transform: none;
+}
+
+/* Utility to hide horizontal scrollbar while allowing smooth scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+

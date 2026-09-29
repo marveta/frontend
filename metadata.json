@@ -1,0 +1,6 @@
+{
+  "name": "Marveta",
+  "description": "AI Market & Competitive Intelligence Platform for enterprise, finance, strategy, and business research.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
