@@ -143,7 +143,7 @@ export const Header: React.FC = () => {
 
               {/* Desktop Right CTA (Visible on lg+ screens) */}
               <div className="hidden lg:flex items-center gap-3">
-                <Link to="/contact">
+                <Link to="/product">
                   <button
                     type="button"
                     className="header-cta-btn group"
@@ -208,7 +208,7 @@ export const Header: React.FC = () => {
                     <div className="pt-2.5 mt-2 border-t border-white/[0.08]">
                       <button
                         type="button"
-                        onClick={() => handleNavClick('/contact')}
+                        onClick={() => handleNavClick('/product')}
                         className="header-cta-btn w-full justify-center group !h-11 !rounded-full cursor-pointer"
                         style={{ clipPath: 'none', WebkitClipPath: 'none' }}
                       >

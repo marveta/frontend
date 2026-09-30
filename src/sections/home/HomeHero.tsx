@@ -76,7 +76,7 @@ export const HomeHero: React.FC = () => {
             </p>
 
             {/* Pill CTA Button (Matching LEARN MORE from reference) */}
-            <Link to="/products" className="w-full sm:w-auto block sm:inline-block">
+            <Link to="/product" className="w-full sm:w-auto block sm:inline-block">
               <button
                 type="button"
                 className="w-full sm:w-auto justify-center px-8 py-3.5 sm:py-4 rounded-full font-heading font-bold text-xs sm:text-sm uppercase tracking-[0.14em] transition-all duration-300 transform active:scale-95 flex items-center gap-3 cursor-pointer shadow-2xl bg-[#C0B4FE] text-[#080910] hover:bg-[#D4CBFE] hover:shadow-[0_0_30px_rgba(192,180,254,0.45)]"
