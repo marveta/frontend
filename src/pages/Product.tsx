@@ -9,9 +9,20 @@ const capabilities = [
   { number: '04', icon: BarChart3, title: 'Compare peers with a fuller picture', name: 'Competitive Comparison Matrix', description: 'Bring peer benchmarks and business signals into one considered view. Explore relative strengths, watch changes in competitive moats, and give strategic conversations a shared foundation.', image: '/Competitive Comparison Matrix.svg', alt: 'Competitive comparison matrix' },
 ];
 const foundations = [
-  { name: 'NVIDIA NeMo', role: 'Language & strategic reasoning', detail: 'Supports synthesis across complex market information.' },
-  { name: 'NVIDIA NIM', role: 'AI inference', detail: 'A standardized foundation for serving AI capabilities.' },
-  { name: 'NVIDIA RAPIDS', role: 'Quantitative analysis', detail: 'cuDF and cuML support accelerated data preparation and modeling.' },
+  { name: 'NVIDIA NeMo', role: 'Understand language and context', detail: 'In a future implementation, specialized language models could be fine-tuned and evaluated on market documents such as earnings calls, filings, press releases, and executive announcements. Their role would be to surface themes, strategic shifts, and event summaries for review.' },
+  { name: 'NVIDIA RAPIDS', role: 'Prepare and compare the numbers', detail: 'cuDF could help normalize and aggregate financial and operational measures. cuML could support peer benchmarks and models that track pricing changes, trends, and competitive positions over time.' },
+  { name: 'NVIDIA NIM', role: 'Deliver approved models to the product', detail: 'Once models and workflows are validated, optimized language and reasoning NIM containers could expose validated models through standardized APIs for the dashboard and analysis pipelines to call.' },
+];
+const implementationSteps = [
+  { step: '01', title: 'Bring market sources together', tool: 'Source and data foundation', detail: 'Connect selected public materials and structured datasets. Resolve company names, timestamps, source links, and peer groups so every signal has useful context.' },
+  { step: '02', title: 'Turn documents into reviewable signals', tool: 'NeMo model development', detail: 'Develop and evaluate task-specific language workflows for transcripts, filings, releases, and announcements. Extract events, themes, and narrative changes, with source references that analysts can inspect.' },
+  { step: '03', title: 'Make company and peer data comparable', tool: 'RAPIDS: cuDF + cuML', detail: 'Normalize financial and operating measures, then calculate peer comparisons and time-based patterns such as pricing movements. Keep these quantitative signals alongside their source and period.' },
+  { step: '04', title: 'Serve validated insights in the dashboard', tool: 'NIM inference services', detail: 'Package approved language and reasoning models behind standard APIs. The dashboard can bring their outputs together with quantitative signals, company context, and links back to supporting evidence.' },
+];
+const rolloutPhases = [
+  { phase: 'Start with a focused foundation', detail: 'Select initial companies and trusted source types; define source tracking, peer mappings, and a small set of quality measures.' },
+  { phase: 'Pilot the highest-value signals', detail: 'Evaluate a narrow set of workflows—such as narrative changes and pricing updates—with analyst review before broadening coverage.' },
+  { phase: 'Expand with evidence', detail: 'Add event categories and benchmarking use cases as quality, usefulness, and operating needs are demonstrated.' },
 ];
 const dashboardUrl = 'https://dash.marveta.lk';
 
@@ -59,11 +70,44 @@ export const ProductPage: React.FC = () => (
       </Container>
     </section>
 
-    <section className="py-20 sm:py-28"><Container className="max-w-7xl">
-      <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-12 md:flex-row md:items-end"><div className="max-w-2xl"><p className="mb-3 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-[#C0B4FE]">Built for meaningful analysis</p><h2 className="font-heading text-3xl font-normal leading-tight tracking-tight text-white sm:text-5xl">A thoughtful foundation behind the insight.</h2></div><p className="max-w-md text-sm leading-relaxed text-white/55">The technology supports the experience. Your team can stay focused on the market, the evidence, and the choices in front of you.</p></div>
-      <div className="grid gap-4 md:grid-cols-3">{foundations.map((item, index) => <article key={item.name} className="rounded-2xl border border-[#343434] bg-[#12131A] p-6 sm:p-7"><div className="mb-8 flex items-center justify-between"><span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#C0B4FE]/20 bg-[#C0B4FE]/[0.08] text-[#C0B4FE]"><Workflow className="h-5 w-5" /></span><span className="font-mono text-xs tracking-widest text-white/30">0{index + 1}</span></div><h3 className="font-heading text-xl font-medium text-white">{item.name}</h3><p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#C0B4FE]">{item.role}</p><p className="mt-4 text-sm leading-relaxed text-white/55">{item.detail}</p></article>)}</div>
-      <p className="mt-5 text-xs leading-relaxed text-white/35">NVIDIA AI and accelerated data science SDKs are selected to support language analysis, inference, and quantitative workflows.</p>
-    </Container></section>
+    <section id="technology" className="py-20 sm:py-28">
+      <Container className="max-w-7xl">
+        <div className="mb-10 flex flex-col justify-between gap-5 sm:mb-12 md:flex-row md:items-end">
+          <div className="max-w-2xl">
+            <p className="mb-3 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-[#C0B4FE]">A considered technology foundation</p>
+            <h2 className="font-heading text-3xl font-normal leading-tight tracking-tight text-white sm:text-5xl">The right tools for language, numbers, and delivery.</h2>
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-white/55">The proposed NVIDIA stack pairs NeMo, NIM, and RAPIDS as building blocks for future Marveta intelligence workflows. Their job is to support useful, reviewable market insight—not to become the story your team has to learn.</p>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {foundations.map((item, index) => <article key={item.name} className="rounded-2xl border border-[#343434] bg-[#12131A] p-6 sm:p-7">
+            <div className="mb-7 flex items-center justify-between"><span className="flex h-10 w-10 items-center justify-center rounded-xl border border-[#C0B4FE]/20 bg-[#C0B4FE]/[0.08] text-[#C0B4FE]"><Workflow className="h-5 w-5" /></span><span className="font-mono text-xs tracking-widest text-white/30">0{index + 1}</span></div>
+            <h3 className="font-heading text-xl font-medium text-white">{item.name}</h3>
+            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#C0B4FE]">{item.role}</p>
+            <p className="mt-4 text-sm leading-relaxed text-white/55">{item.detail}</p>
+          </article>)}
+        </div>
+
+        <div className="mt-16 sm:mt-20">
+          <div className="mb-8 max-w-3xl"><p className="mb-3 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-[#C0B4FE]">Where each SDK would fit</p><h3 className="font-heading text-2xl font-normal leading-tight text-white sm:text-4xl">A path from source material to a decision-ready view.</h3><p className="mt-4 text-sm leading-relaxed text-white/55 sm:text-base">A possible future flow would combine language analysis and quantitative analysis, then make validated results available to the dashboard with the supporting context attached.</p></div>
+          <div className="grid gap-4 md:grid-cols-2">
+            {implementationSteps.map((item) => <article key={item.step} className="relative rounded-2xl border border-[#343434] bg-[#0E0F17] p-6 sm:p-7">
+              <div className="mb-5 flex items-center gap-3"><span className="font-mono text-xs tracking-widest text-[#C0B4FE]">{item.step}</span><span className="h-px w-8 bg-[#C0B4FE]/40"/><span className="text-xs font-heading font-semibold uppercase tracking-[0.1em] text-white/40">{item.tool}</span></div>
+              <h4 className="font-heading text-lg font-medium text-white sm:text-xl">{item.title}</h4><p className="mt-3 text-sm leading-relaxed text-white/55">{item.detail}</p>
+            </article>)}
+          </div>
+          <div className="mt-5 rounded-xl border border-[#C0B4FE]/15 bg-[#C0B4FE]/[0.04] px-5 py-4 text-sm leading-relaxed text-white/60"><span className="font-semibold text-[#C0B4FE]">Evidence stays close:</span> Each future signal should retain its source, date, and relevant company context, so teams can check what supports an insight before acting on it.</div>
+        </div>
+
+        <div className="mt-16 border-t border-white/10 pt-12 sm:mt-20 sm:pt-16">
+          <div className="mb-8 max-w-2xl"><p className="mb-3 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-[#C0B4FE]">A practical future rollout</p><h3 className="font-heading text-2xl font-normal leading-tight text-white sm:text-4xl">Prove the value in stages.</h3><p className="mt-4 text-sm leading-relaxed text-white/55">The sequence below is a proposed direction, not a claim that these NVIDIA workflows are already deployed.</p></div>
+          <div className="grid gap-0 md:grid-cols-3">
+            {rolloutPhases.map((item, index) => <article key={item.phase} className={`border-t border-[#343434] py-6 md:px-6 md:py-7 ${index === 0 ? 'md:pl-0' : ''}`}><p className="mb-3 font-mono text-xs tracking-widest text-[#C0B4FE]">PHASE 0{index + 1}</p><h4 className="font-heading text-lg font-medium text-white">{item.phase}</h4><p className="mt-3 text-sm leading-relaxed text-white/55">{item.detail}</p></article>)}
+          </div>
+        </div>
+        <p className="mt-8 text-xs leading-relaxed text-white/35">Final model choices, infrastructure, data access, and deployment controls would be set during implementation and validation.</p>
+      </Container>
+    </section>
 
     <section className="px-3 sm:px-5 md:px-6 lg:px-8"><div className="relative mx-auto max-w-[1440px] overflow-hidden rounded-[24px] border border-[#343434] bg-[#12131A] px-6 py-14 text-center sm:rounded-[32px] sm:px-12 sm:py-20"><div className="absolute inset-0 bg-[url('/Hero%20cover%20image.svg')] bg-cover bg-center opacity-20" aria-hidden="true" /><div className="absolute inset-0 bg-gradient-to-r from-[#080910]/90 via-[#080910]/55 to-[#080910]/90" aria-hidden="true" /><div className="relative mx-auto max-w-3xl"><p className="mb-3 text-xs font-heading font-semibold uppercase tracking-[0.2em] text-[#C0B4FE]">Stay a step ahead</p><h2 className="font-heading text-3xl font-normal leading-tight text-white sm:text-5xl">Make your next move with more of the picture.</h2><p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/65 sm:text-base">Explore Marveta V.1 and see your competitive landscape from a new perspective.</p><a href={dashboardUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[#C0B4FE] px-7 font-heading text-xs font-bold uppercase tracking-[0.13em] text-[#080910] transition-colors hover:bg-[#D4CBFE]">Open Marveta V.1 <ArrowUpRight className="h-4 w-4" /></a></div></div></section>
   </div>
